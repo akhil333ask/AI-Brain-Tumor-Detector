@@ -1,7 +1,7 @@
 Flask
 gunicorn
 numpy
-tensorflow
+tensorflow-cpu
 Pillow
 Werkzeug
 opencv-python-headless
