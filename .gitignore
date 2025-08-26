@@ -1,0 +1,18 @@
+# Python virtual environment
+aienv/
+
+# Large datasets - DO NOT UPLOAD
+/Brain Tumor MRI Dataset/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Temporary upload folder created by the app
+uploads/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# System files
+.DS_Store

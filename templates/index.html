@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroScan AI - Advanced Medical Imaging Analysis</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS (Linked via Flask) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-overlay"></div>
+    <div class="bg-particles"></div>
+    
+    <!-- Header -->
+    <header class="luxury-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-brain brand-icon"></i>
+                    <span class="brand-text">NeuroScan AI</span>
+                </a>
+                <div class="header-controls">
+                    <span class="status-indicator">
+                        <i class="fas fa-circle"></i>
+                        System Online
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    
+                    <!-- Title Section -->
+                    <div class="title-section text-center mb-5">
+                        <h1 class="main-title">
+                            AI Brain Tumor Detector
+                        </h1>
+                        <p class="subtitle">
+                            Advanced artificial intelligence for medical imaging analysis
+                        </p>
+                        <div class="educational-disclaimer">
+                            <i class="fas fa-info-circle"></i>
+                            This tool is for educational purposes only
+                        </div>
+                        <div class="title-divider"></div>
+                    </div>
+
+                    <!-- Upload Card -->
+                    <div class="upload-card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-upload"></i>
+                                Upload MRI/CT Scan
+                            </h3>
+                            <p class="card-subtitle">
+                                Secure medical image analysis with enterprise-grade AI
+                            </p>
+                        </div>
+
+                        <div class="upload-section">
+                            <!-- Upload Area -->
+                            <div class="upload-area" id="uploadArea">
+                                <div class="upload-content">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    </div>
+                                    <h4 class="upload-title">Upload Medical Scan</h4>
+                                    <p class="upload-text">
+                                        Click to browse or drag & drop your MRI or CT scan
+                                    </p>
+                                    <div class="upload-formats">
+                                        <span class="format-tag">PNG</span>
+                                        <span class="format-tag">JPG</span>
+                                        <span class="format-tag">TIFF</span>
+                                        <span class="format-tag">DCM</span>
+                                        <span class="format-tag">NII</span>
+                                    </div>
+                                </div>
+                                <input type="file" id="fileInput" class="file-input" accept=".png,.jpg,.jpeg,.gif,.bmp,.tiff,.dcm,.nii,.mhd,.raw">
+                            </div>
+
+                            <!-- File Info -->
+                            <div class="file-info" id="fileInfo" style="display: none;">
+                                <div class="file-details">
+                                    <i class="fas fa-file-medical"></i>
+                                    <div class="file-text">
+                                        <span class="file-name" id="fileName"></span>
+                                        <span class="file-size" id="fileSize"></span>
+                                    </div>
+                                    <button class="btn-remove" id="removeFile">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="file-preview" id="filePreview"></div>
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div class="progress-container" id="progressContainer" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                                <span class="progress-text" id="progressText">Uploading...</span>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="action-buttons">
+                                <button class="btn btn-analyze" id="analyzeBtn" disabled>
+                                    <i class="fas fa-brain"></i>
+                                    <span>Analyze Scan</span>
+                                    <div class="btn-shimmer"></div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div class="results-card" id="resultsCard" style="display: none;">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-chart-line"></i>
+                                Analysis Results
+                            </h3>
+                        </div>
+                        <div class="results-content" id="resultsContent">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Alert Messages -->
+                    <div class="alert-container" id="alertContainer"></div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="luxury-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <span>© 2025 NeuroScan AI</span>
+                    <span class="separator">•</span>
+                    <span>Advanced Medical Imaging</span>
+                </div>
+                <div class="footer-badges">
+                    <span class="badge educational">Educational Tool Only</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS (Linked via Flask) -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
